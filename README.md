@@ -110,11 +110,11 @@ This project requires **Python 3.7+** and it is recommended to use a virtual env
 
 ### Installation
 
-1. Clone the repo.
+1. Clone the repo.  
    ```sh
    git clone https://github.com/rsonger/pycg-framework.git
    ```
-2. Create a virtual environment.
+2. Create a virtual environment.  
   **venv**
    ```sh
    python -m venv .venv
@@ -123,7 +123,7 @@ This project requires **Python 3.7+** and it is recommended to use a virtual env
    ```sh
    pipenv install
    ```
-3. Activate the virtual environment.
+3. Activate the virtual environment.  
    **venv**
    ```sh
    # Windows
@@ -135,11 +135,11 @@ This project requires **Python 3.7+** and it is recommended to use a virtual env
    ```sh
    pipenv shell
    ```
-4. In **venv**, the packages need to be installed after activating the environment.
+4. In **venv**, the packages need to be installed after activating the environment.  
    ```sh
    pip install -r requirements.txt
    ```
-5. On **MacOS**, a discrepency in the OpenGL package may result in an `ImportError`. You can test this by running the following command in the terminal:
+5. On **MacOS**, a discrepency in the OpenGL package may result in an `ImportError`. You can test this by running the following command in the terminal:  
    ```sh
    python -c "import OpenGL.GL"
    ```
@@ -147,7 +147,7 @@ This project requires **Python 3.7+** and it is recommended to use a virtual env
    ```python
    fullName = util.find_library( name )
    ```
-   Then change the line to:
+   Then change the line to:  
    ```python
    fullName = f"/System/Library/Frameworks/{name}.framework/{name}"
    ```
