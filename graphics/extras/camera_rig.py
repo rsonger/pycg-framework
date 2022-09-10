@@ -1,6 +1,6 @@
 from math import pi
 
-from core.scene_graph import Group
+from graphics.core.scene_graph import Group
 
 class CameraRig(Group):
     """A camera that can look up and down while attached to a movable base."""

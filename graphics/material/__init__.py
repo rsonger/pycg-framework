@@ -8,8 +8,8 @@ Modules exported by this package:
 
 from OpenGL.GL import GL_TRIANGLES
 
-from core.openGL import Uniform
-from core.openGLUtils import OpenGLUtils
+from graphics.core.openGL import Uniform
+from graphics.core.openGLUtils import OpenGLUtils
 
 class Material:
     """The Material class stores shader program references, Uniform objects, and OpenGL render settings.

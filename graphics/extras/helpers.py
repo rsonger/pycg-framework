@@ -1,7 +1,7 @@
-from core.scene_graph import Mesh, Group
-from geometry import Geometry
-from geometry.basic_geometries import BoxGeometry
-from material.basic_materials import SurfaceMaterial, LineMaterial
+from graphics.core.scene_graph import Mesh, Group
+from graphics.geometry import Geometry
+from graphics.geometry.basic_geometries import BoxGeometry
+from graphics.material.basic_materials import SurfaceMaterial, LineMaterial
 
 class AxesHelper:
     """Creates a mesh to render the 3 coordinate axes in different colors."""

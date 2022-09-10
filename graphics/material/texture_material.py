@@ -1,6 +1,6 @@
 import OpenGL.GL as GL
 
-from material import Material
+from graphics.material import Material
 
 class TextureMaterial(Material):
 
@@ -27,14 +27,14 @@ class TextureMaterial(Material):
 
         fs_code = """
         uniform vec3 baseColor;
-        uniform sampler2D texture;
+        uniform sampler2D texture2D;
 
         in vec2 UV;
 
         out vec4 fragColor;
 
         void main() {
-            vec4 color = vec4(baseColor, 1.0) * texture2D(texture, UV);
+            vec4 color = vec4(baseColor, 1.0) * texture(texture2D, UV);
             if (color.a < 0.10)
                 discard;
 
@@ -45,7 +45,7 @@ class TextureMaterial(Material):
         super().__init__(vs_code, fs_code)
 
         self.set_uniform("baseColor", (1.0, 1.0, 1.0), "vec3")
-        self.set_uniform("texture", (texture.texture_ref, 1), "sampler2D")
+        self.set_uniform("texture2D", (texture.texture_ref, 1), "sampler2D")
         self.set_uniform("repeatUV", (1.0, 1.0), "vec2")
         self.set_uniform("offsetUV", (0.0, 0.0), "vec2")
 

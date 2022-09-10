@@ -1,9 +1,9 @@
 from numpy.linalg import inv
 import OpenGL.GL as GL
 
-from core.matrix import Matrix
-from geometry import Geometry
-from material import Material
+from graphics.core.matrix import Matrix
+from graphics.geometry import Geometry
+from graphics.material import Material
 
 class Object3D:
     """The Object3D class represents a node in the scene graph tree structure. 

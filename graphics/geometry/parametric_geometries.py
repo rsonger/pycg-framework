@@ -1,9 +1,9 @@
 from math import sin, cos, pi
 from numpy import linspace
 
-from core.matrix import Matrix
-from geometry import Geometry
-from geometry.basic_geometries import PolygonGeometry
+from graphics.core.matrix import Matrix
+from graphics.geometry import Geometry
+from graphics.geometry.basic_geometries import PolygonGeometry
 
 class ParametricGeometry(Geometry):
     """A geometric surface rendered with the given function for parameters u and v."""

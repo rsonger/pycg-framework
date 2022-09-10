@@ -1,6 +1,6 @@
 import OpenGL.GL as GL
 
-from core.scene_graph import Mesh, Camera, Scene
+from graphics.core.scene_graph import Mesh, Camera, Scene
 
 class Renderer:
     """Manages the rendering of a given scene with basic OpenGL settings."""

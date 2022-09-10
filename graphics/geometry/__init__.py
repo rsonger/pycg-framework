@@ -6,7 +6,7 @@ Modules exported by this package:
 - `parametric_geometries`
 """
 
-from core.openGL import Attribute
+from graphics.core.openGL import Attribute
 
 class Geometry:
     """Geometry objects store attribute data and their total number of vertices.

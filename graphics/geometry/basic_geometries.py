@@ -1,6 +1,6 @@
 from math import sin, cos, pi
 
-from geometry import Geometry
+from graphics.geometry import Geometry
 
 class RectangleGeometry(Geometry):
     """This class represents a rectangular geometric object.
