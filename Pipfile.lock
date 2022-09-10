@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0c9bf9b6c816c281b05e95f8a1bb72fc996c9aea3178633c1bffe380b67d972a"
+            "sha256": "4faff187681fc40e775bfdaf7f849ae0453df710466f61b1a6992440c764b8ba"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -118,12 +118,12 @@
         },
         "pyopengl": {
             "hashes": [
-                "sha256:11ad32c7bde7ea0ffb7a94dd552c639ca72376982a8dd6fe0c092d2002a4ca6e",
-                "sha256:36b4ac28220e4bfa29e5557525ad2967ca74558a94bccea48864fc742b18db11",
-                "sha256:4107ba0d0390da5766a08c242cf0cf3404c377ed293c5f6d701e457c57ba3424"
+                "sha256:57c597d989178e1413002df6b923619f6d29807501dece1c60cc6f12c0c8e8a7",
+                "sha256:8ea6c8773927eda7405bffc6f5bb93be81569a7b05c8cac50cd94e969dce5e27",
+                "sha256:a7139bc3e15d656feae1f7e3ef68c799941ed43fadc78177a23db7e946c20738"
             ],
             "index": "pypi",
-            "version": "==3.1.5"
+            "version": "==3.1.6"
         },
         "pyopengl-accelerate": {
             "hashes": [
