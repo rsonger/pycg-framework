@@ -1,23 +1,15 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<!-- Adapted from: https://github.com/othneildrew/Best-README-Template -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
 
 
 <!-- PROJECT SHIELDS -->
 <!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+URLs are written in "reference style" for readability.
+Reference style uses brackets [ ] instead of parentheses ( ).
+See the bottom of this document for the reference declarations.
+https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 <div align="center">
 
 <!-- [![Contributors][contributors-shield]][contributors-url] -->
@@ -29,7 +21,6 @@
 <!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 <!-- PROJECT LOGO -->
-
   <!-- <a href="https://github.com/rsonger/pycg-framework">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
@@ -37,39 +28,33 @@
 # PyCG Framework
 
 A framework for rendering 3D computer graphics with Python.
-<!-- <br />
-<a href="https://github.com/rsonger/pycg-framework"><strong>Explore the docs »</strong></a> -->
+
+<!-- <a href="https://github.com/rsonger/pycg-framework"><strong>Explore the docs »</strong></a> -->
 <!-- <a href="https://github.com/rsonger/pycg-framework">View Demo</a>
 · -->
+
 [Report Bug][issues-url] · [Request Feature][issues-url]
+
+![Screenshot][screenshot]
+
 </div>
 
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <!-- <li><a href="#usage">Usage</a></li> -->
-    <!-- <li><a href="#roadmap">Roadmap</a></li> -->
-    <!-- <li><a href="#contributing">Contributing</a></li> -->
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
+<!-- <details>
+  <summary>Table of Contents</summary> -->
+## Table of Contents
+  1. [About the Project](#about-the-project)
+     - [Built With](#built-with)
+  2. [Getting Started](#getting-started)
+     - [Prerequisites](#prerequisites)
+     - [Installation](#installation)
+  3. [Usage](#usage)
+  4. [License](#license)
+  5. [Contact](#contact)
+  6. [Acknowledgments](#acknowledgments)
+
 </details>
 
 
@@ -81,7 +66,11 @@ This 3D CG graphics framework was created using Python for the purposes of teach
 
 For more information on the course in which this framework is being used, see the [Software Engineering Lab](https://robsonger.dev/software-engineering-lab/) website and its posts for individual lessons.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<div align="right">
+
+( [back to top](#readme-top) )
+
+</div>
 
 
 
@@ -92,7 +81,9 @@ For more information on the course in which this framework is being used, see th
 * [![PyOpenGL][PyOpenGL]][PyOpenGL-url]
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
+
+( [back to top](#readme-top) )
+
 </div>
 
 
@@ -153,21 +144,33 @@ This project requires **Python 3.7+** and it is recommended to use a virtual env
    ```
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
+
+( [back to top](#readme-top) )
+
 </div>
 
 
 
 <!-- USAGE EXAMPLES -->
-<!-- ## Usage
+## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The `WindowApp` class in the `graphics.core.app` module contains all the basic logic for setting up a rendering context inside a windowed application. It implements the typical lifecycle of an interactive rendering application as shown in the flowchart below. An application using the framework should extend the `WindowApp` class and implement its `startup` and `update` methods as exemplified by the program in `demo.py`.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<div align="center">
+
+![Application lifecycle](images/app-flow.png)
+
+</div>
+
+Run the demo app with `python demo.py` to see the scene depicted in the screenshot from above. The demo also makes use of `CameraRig` from `graphics.extras.camera_rig` which allows the user to move through the scene and look. The keys <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move the camera forward, left, back, and right while <kbd>Q</kbd> and <kbd>E</kbd> move it down and up. The keys <kbd>I</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd> rotate the camera to look up, left, down, and right. 
+
+<!-- *For more examples, please refer to the [Documentation](https://example.com)* -->
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
-</div> -->
+
+( [back to top](#readme-top) )
+
+</div>
 
 
 
@@ -213,7 +216,9 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the [Academic Free License](https://opensource.org/licenses/AFL-3.0). See `LICENSE.txt` for more information.
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
+
+( [back to top](#readme-top) )
+
 </div>
 
 
@@ -228,7 +233,9 @@ Rob Songer
 Project Link: [https://github.com/rsonger/pycg-framework](https://github.com/rsonger/pycg-framework)
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
+
+( [back to top](#readme-top) )
+
 </div>
 
 
@@ -239,7 +246,9 @@ Project Link: [https://github.com/rsonger/pycg-framework](https://github.com/rso
 * Lee Stemkoski and Michael Pascale (2021). *Developing Graphics Frameworks with Python and OpenGL*. CRC Press, [in print](https://www.routledge.com/Developing-Graphics-Frameworks-with-Python-and-OpenGL/Stemkoski-Pascale/p/book/9780367721800) and [online](https://www.taylorfrancis.com/books/oa-mono/10.1201/9781003181378/developing-graphics-frameworks-python-opengl-lee-stemkoski-michael-pascale). DOI: [10.1201/9781003181378](https://doi.org/10.1201/9781003181378)
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
+
+( [back to top](#readme-top) )
+
 </div>
 
 
@@ -258,7 +267,7 @@ Project Link: [https://github.com/rsonger/pycg-framework](https://github.com/rso
 [license-url]: https://github.com/rsonger/pycg-framework/blob/master/LICENSE.txt
 [website-shield]: https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Frobsonger.dev%2F
 [website-url]: https://robsonger.dev/
-<!-- [product-screenshot]: screenshots/axes_and_grid.png -->
+[screenshot]: images/screenshot.png
 [Python]: https://img.shields.io/github/pipenv/locked/python-version/rsonger/pycg-framework?style=flat-square
 [Python-url]: https://www.python.org/
 [Pygame]: https://img.shields.io/badge/Pygame-2.1.1-brightgreen?style=flat-square
