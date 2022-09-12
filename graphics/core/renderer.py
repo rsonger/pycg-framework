@@ -14,10 +14,8 @@ class Renderer:
         GL.glEnable(GL.GL_MULTISAMPLE)
         GL.glClearColor(*clear_color, 1)
 
-#### Begin extension from 3.4 ####
         GL.glEnable(GL.GL_BLEND)
         GL.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA)
-######## End extension ########
 
     def render(self, scene, camera):
         """Render the given scene as viewed through the given camera.

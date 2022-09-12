@@ -61,7 +61,6 @@ class Geometry:
         else:
             self._vertex_count = len(list(self._attributes.values())[0].data)
 
-#### Begin extension from 4.3.6 ####
     def apply_matrix(self, matrix, variable_name="vertexPosition"):
         """Transform the data in an attribute using the given matrix."""
         if variable_name not in self._attributes.keys():
@@ -91,4 +90,3 @@ class Geometry:
             self.set_attribute(variable_name, attribute.data)
 
         self.count_vertices()
-########### End extension ###########

@@ -28,13 +28,11 @@ class RectangleGeometry(Geometry):
 
         self.count_vertices()
 
-#### Begin extension from 5.2 ####
         # texture coordinates
         T0, T1, T2, T3 = (0,0), (1,0), (0,1), (1,1)
         uv_data = (T0,T1,T3, T0,T3,T2)
 
         self.set_attribute("vertexUV", uv_data, "vec2")
-######## End extension ########
 
 
 class BoxGeometry(Geometry):
@@ -74,13 +72,11 @@ class BoxGeometry(Geometry):
         self.set_attribute("vertexColor", color_data, "vec3")
         self.count_vertices()
 
-#### Begin extension from 5.2 ####
         # texture coordinates
         T0, T1, T2, T3 = (0,0), (1,0), (0,1), (1,1)
         uv_data = [T0,T1,T3, T0,T3,T2] * 6
 
         self.set_attribute("vertexUV", uv_data, "vec2")
-######## End extension ########
 
 
     def change_position(self, position_data):
@@ -103,10 +99,8 @@ class PolygonGeometry(Geometry):
         position_data = []
         color_data = []
 
-#### Begin extension from 5.2 ####
         # texture coordinates
         uv_data = []
-######## End extension ########
 
         for n in range(sides):
             position_data += (
@@ -116,7 +110,6 @@ class PolygonGeometry(Geometry):
             )            
             color_data += ((1, 1, 1), (1, 0, 0), (0, 0, 1))
 
-#### Begin extension from 5.2 ####
             # texture coordinates
             uv_data += (
                 (0.5, 0.5),
@@ -125,7 +118,6 @@ class PolygonGeometry(Geometry):
             )
 
         self.set_attribute("vertexUV", uv_data, "vec2")
-######## End extension ########
 
         self.set_attribute("vertexPosition", position_data, "vec3")
         self.set_attribute("vertexColor", color_data, "vec3")

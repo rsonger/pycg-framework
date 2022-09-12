@@ -9,14 +9,12 @@ class Input:
         # indicate whether the user has quit the application.
         self._quit = False
 
-        #### Begin extension from 2.5 ####
         # lists for key states
         #   down, up: discrete events that last for one iteration
         #   pressed: continuous events occurring between down and up events
         self.__key_down_list = []
         self.__key_pressed_list = []
         self.__key_up_list = []
-        ######## End extension ########
 
     @property
     def quit(self):
@@ -41,18 +39,15 @@ class Input:
     def update(self):
         """Iterate over all user input events (such as keyboard or mouse) that occurred since the last events were checked."""
 
-#### Begin extension from 2.5 ####
         # reset discrete key states
         self.__key_down_list = []
         self.__key_up_list = []
-######## End extension ########
 
         for event in pygame.event.get():
             # quit event occurs by clicking the close button
             if event.type == pygame.QUIT:
                 self._quit = True
 
-#### Begin extension from 2.5 ####
             # handle keyboard events
             #   keydown events initiate the pressed state
             #   keyup events terminate the pressed state
@@ -78,7 +73,6 @@ class Input:
     def iskeyup(self, key_code):
         """Checks the up state of the given key"""
         return key_code in self.__key_up_list
-######## End extension ########
 
 
 class WindowApp:
@@ -88,7 +82,7 @@ class WindowApp:
 
         # initialize all pygame modules
         pygame.init()
-        #indicate rendering details
+        # indicate rendering details
         display_flags = pygame.OPENGL | pygame.DOUBLEBUF
         # initialize buffers to perform antialiasing
         pygame.display.gl_set_attribute(pygame.GL_MULTISAMPLEBUFFERS, 1)
@@ -104,12 +98,9 @@ class WindowApp:
         # manage time-related data and operations
         self.clock = pygame.time.Clock()
 
-#### Begin extension from 2.1 ####
         # handle user inputs
         self.input = Input()
-######## End extension ########
 
-#### Begin extension from 2.4 ####
         # timekeeper variables
         self.__time = 0
         self.__delta_time = 0
@@ -121,9 +112,8 @@ class WindowApp:
     @property
     def delta_time(self):
         return self.__delta_time
-######## End extension ########
 
-    # to be implemented by subclasses !!--- Should be named 'startup' to avoid confusion with __init__ ---!!
+    # to be implemented by subclasses
     def startup(self):
         pass
 
@@ -142,20 +132,16 @@ class WindowApp:
         ## main loop ##
         while running:
 
-#### Begin extenstion from 2.1 ####
             ## process input ##
             self.input.update()
             if self.input.quit:
                 running = False
                 break
-######## End extension ########
 
-#### Begin extension from 2.4 ####
             # calculate seconds since last iteration of the run loop
             self.__delta_time = self.clock.get_time() / 1000
             # increment time application has been running
             self.__time += self.__delta_time
-######## End extension #########
 
             ## update ##
             self.update()

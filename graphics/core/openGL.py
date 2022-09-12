@@ -142,15 +142,11 @@ class Uniform:
                            self.data[1], 
                            self.data[2], 
                            self.data[3])
-#### Begin extension from 3.4 ####
         elif self.data_type == "mat4":
             GL.glUniformMatrix4fv(self.variable_ref, 1, GL.GL_TRUE, self.data)
-######## End extension ########
-#### Begin extension from 5.3 ####
         elif self.data_type == "sampler2d":
             texture_obj_ref, texture_unit_ref = self.data
 
             GL.glActiveTexture(GL.GL_TEXTURE0 + texture_unit_ref)
             GL.glBindTexture(GL.GL_TEXTURE_2D, texture_obj_ref)
             GL.glUniform1i(self.variable_ref, texture_unit_ref)
-######## End extension ########

@@ -64,7 +64,7 @@ A framework for rendering 3D computer graphics with Python.
 
 This 3D CG graphics framework was created using Python for the purposes of teaching Computer Graphics and Software Engineering through the object-oriented design and application of a CG rendering library. The framework is largely adapted from the same one developed by Lee Stemkoski and Michael Pascale (see [Acknowledgments](#acknowledgments)) with modifications to improve its cross-compatibility, follow object-oriented design principles, and make the source code more pythonic.
 
-For more information on the course in which this framework is being used, see the [Software Engineering Lab](https://robsonger.dev/software-engineering-lab/) website and its posts for individual lessons.
+For more information on the course and the companion material that uses this framework, see the [Software Engineering Lab](https://robsonger.dev/software-engineering-lab/) website and the posts there.
 
 <div align="right">
 
@@ -175,18 +175,50 @@ Run the demo app with `python demo.py` to see the scene depicted in the screensh
 
 
 <!-- ROADMAP -->
-<!-- ## Roadmap
+## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/rsonger/pycg-framework/issues) for a full list of proposed features (and known issues).
+- [x] [Window context](https://robsonger.dev/software-engineering-lab/notes/windows-points/)
+  - [x] [Input handler](https://robsonger.dev/software-engineering-lab/notes/windows-points/#the-input-class)
+  - [x] [Keyboard inputs](https://robsonger.dev/software-engineering-lab/notes/animations/#keyboard-input-with-pygame)
+- [x] OpenGL interfaces
+  - [x] [GPU program compiler](https://robsonger.dev/software-engineering-lab/notes/windows-points/#22---drawing-a-point)
+  - [x] [VAOs (vertex array objects)](https://robsonger.dev/software-engineering-lab/notes/drawing-shapes/)
+  - [x] [Uniform variables](https://robsonger.dev/software-engineering-lab/notes/animations/#the-uniform-class)
+- [x] [Time-keeping for animations](https://robsonger.dev/software-engineering-lab/notes/animations/#keeping-time)
+- [x] [Matrices for geometric transformations](https://robsonger.dev/software-engineering-lab/notes/the_matrix/)
+- [x] [Scene graph](https://robsonger.dev/software-engineering-lab/notes/scene_graph/)
+  - [x] [3D Objects](https://robsonger.dev/software-engineering-lab/notes/scene_graph/#3d-objects)
+  - [x] [Vertex geometry](https://robsonger.dev/software-engineering-lab/notes/geometry_and_material/#geometry-objects)
+    - [x] [Parametric Geometries](https://robsonger.dev/software-engineering-lab/notes/parametric_geometry/)
+  - [x] [Shader materials](https://robsonger.dev/software-engineering-lab/notes/geometry_and_material/#material-objects)
+  - [x] [Camera object](https://robsonger.dev/software-engineering-lab/notes/scene_graph/#camera)
+  - [x] [Renderer](https://robsonger.dev/software-engineering-lab/notes/geometry_and_material/#rendering-scenes-with-the-framework)
+  - [x] Extra components
+    - [x] [Axes helper](https://robsonger.dev/software-engineering-lab/notes/building_a_scene/#axes-helper)
+    - [x] [Grid helper](https://robsonger.dev/software-engineering-lab/notes/building_a_scene/#grid-helper)
+    - [x] [Camera rig](https://robsonger.dev/software-engineering-lab/notes/building_a_scene/#camera-rig)
+- [ ] Texture Mapping
+  - [x] Basic texture shader
+  - [ ] Procedurally generated textures
+  - [ ] Generating textures from text
+  - [ ] 2D Sprites
+- [ ] Heads-Up Display
+  - [ ] Orthogonal projection
+- [ ] TV textures as render targets
+- [ ] Postprocessing
+- [ ] Lighting
+  - [ ] Ambient, directional, and point sources
+  - [ ] Normal vectors for vertices
+  - [ ] Shader attributes and uniforms
+  - [ ] Rendering lights
+  - [ ] Light source helpers
+  - [ ] Bump mapping
+  - [ ] Bloom and glow effects
+  - [ ] Shadows
 
 <div align="right">
 (<a href="#readme-top">back to top</a>)
-</div> -->
+</div>
 
 
 

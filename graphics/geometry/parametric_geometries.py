@@ -19,7 +19,6 @@ class ParametricGeometry(Geometry):
                 matrix_row.append(surface_function(u,v))
             point_matrix.append(matrix_row)
         
-#### Begin extension from 5.2 ####
         # texture coordinates
         uv_matrix = []
         uv_data = []
@@ -31,7 +30,6 @@ class ParametricGeometry(Geometry):
                 v = v_index/v_resolution
                 uv_row.append((u,v))
             uv_matrix.append(uv_row)
-######## End extension ########
 
         # store vertex data
         position_data = []
@@ -51,7 +49,6 @@ class ParametricGeometry(Geometry):
                 position_data += [P1,P2,P3, P1,P3,P4]
                 color_data += [C1,C2,C3, C4,C5,C6]
 
-#### Begin extension from 5.2 ####
                 # texture coordinates
                 uv_A = uv_matrix[n + 0][m + 0]
                 uv_B = uv_matrix[n + 1][m + 0]
@@ -60,7 +57,6 @@ class ParametricGeometry(Geometry):
                 uv_data += [uv_A,uv_B,uv_C, uv_A,uv_C,uv_D]
 
         self.set_attribute("vertexUV", uv_data, "vec2")
-######## End extension ########
 
         self.set_attribute("vertexPosition", position_data, "vec3")
         self.set_attribute("vertexColor", color_data, "vec3")
