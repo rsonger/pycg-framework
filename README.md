@@ -1,6 +1,4 @@
-<!-- Adapted from: https://github.com/othneildrew/Best-README-Template -->
-<a name="readme-top"></a>
-
+<a name="top"></a>
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -18,22 +16,14 @@ https://www.markdownguide.org/basic-syntax/#reference-style-links
 
 [![Issues][issues-shield]][issues-url] [![AFL License][license-shield]][license-url]
 
-<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
-
-<!-- PROJECT LOGO -->
-  <!-- <a href="https://github.com/rsonger/pycg-framework">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
 
 # PyCG Framework
 
 A framework for rendering 3D computer graphics with Python.
 
-<!-- <a href="https://github.com/rsonger/pycg-framework"><strong>Explore the docs »</strong></a> -->
-<!-- <a href="https://github.com/rsonger/pycg-framework">View Demo</a>
-· -->
+<!-- [Explore the docs](https://github.com/rsonger/pycg-framework) » -->
 
-[Report Bug][issues-url] · [Request Feature][issues-url]
+[Try It](#usage) · [Report Bug][issues-url] · [Request Feature][issues-url]
 
 ![Screenshot][screenshot]
 
@@ -53,7 +43,7 @@ A framework for rendering 3D computer graphics with Python.
   3. [Usage](#usage)
   4. [License](#license)
   5. [Contact](#contact)
-  6. [Acknowledgments](#acknowledgments)
+  6. [References](#references)
 
 </details>
 
@@ -62,13 +52,13 @@ A framework for rendering 3D computer graphics with Python.
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This 3D CG graphics framework was created using Python for the purposes of teaching Computer Graphics and Software Engineering through the object-oriented design and application of a CG rendering library. The framework is largely adapted from the same one developed by Lee Stemkoski and Michael Pascale (see [Acknowledgments](#acknowledgments)) with modifications to improve its cross-compatibility, follow object-oriented design principles, and make the source code more pythonic.
+This 3D CG graphics framework was created using Python for the purposes of teaching Computer Graphics and Software Engineering through the object-oriented design and application of a CG rendering library. The framework is largely inspired by the one developed by Lee Stemkoski and Michael Pascale (see [References](#references)) with a focus on cross-compatibility, object-oriented software design principles, and the use of pythonic conventions over the ones commonly used with OpenGL.
 
-For more information on the course and the companion material that uses this framework, see the [Software Engineering Lab](https://robsonger.dev/software-engineering-lab/) website and the posts there.
+For more information on the course and the companion material that uses this framework, see the [Software Engineering Lab][selab-url] website and the posts there.
 
 <div align="right">
 
-( [back to top](#readme-top) )
+( [back to top](#top) )
 
 </div>
 
@@ -82,7 +72,7 @@ For more information on the course and the companion material that uses this fra
 
 <div align="right">
 
-( [back to top](#readme-top) )
+( [back to top](#top) )
 
 </div>
 
@@ -96,8 +86,8 @@ The following instructions describe how to create a local copy of the framework 
 
 This project requires **Python 3.7+** and it is recommended to use a virtual environment for installing all the dependencies. Either **venv** or **Pipenv** work fine.
 * [Python][Python-url]
-* [venv](https://docs.python.org/3/library/venv.html)
-* [Pipenv](https://pipenv.pypa.io/)
+* [venv][venv-url]
+* [Pipenv][pipenv-url]
 
 ### Installation
 
@@ -145,7 +135,7 @@ This project requires **Python 3.7+** and it is recommended to use a virtual env
 
 <div align="right">
 
-( [back to top](#readme-top) )
+( [back to top](#top) )
 
 </div>
 
@@ -168,7 +158,7 @@ Run the demo app with `python demo.py` to see the scene depicted in the screensh
 
 <div align="right">
 
-( [back to top](#readme-top) )
+( [back to top](#top) )
 
 </div>
 
@@ -217,7 +207,9 @@ Run the demo app with `python demo.py` to see the scene depicted in the screensh
   - [ ] Shadows
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
+
+( [back to top](#top) )
+
 </div>
 
 
@@ -237,19 +229,20 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <div align="right">
-(<a href="#readme-top">back to top</a>)
-</div> -->
 
+( [back to top](#top) )
+
+</div> -->
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the [Academic Free License](https://opensource.org/licenses/AFL-3.0). See `LICENSE.txt` for more information.
+Distributed under the [Academic Free License][afl-url]. See `LICENSE.txt` for more information.
 
 <div align="right">
 
-( [back to top](#readme-top) )
+( [back to top](#top) )
 
 </div>
 
@@ -262,24 +255,24 @@ Rob Songer
 
 [![Website][website-shield]][website-url]
 
-Project Link: [https://github.com/rsonger/pycg-framework](https://github.com/rsonger/pycg-framework)
+Project Link: https://github.com/rsonger/pycg-framework
 
 <div align="right">
 
-( [back to top](#readme-top) )
+( [back to top](#top) )
 
 </div>
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!-- REFERENCES -->
+## References
 
-* Lee Stemkoski and Michael Pascale (2021). *Developing Graphics Frameworks with Python and OpenGL*. CRC Press, [in print](https://www.routledge.com/Developing-Graphics-Frameworks-with-Python-and-OpenGL/Stemkoski-Pascale/p/book/9780367721800) and [online](https://www.taylorfrancis.com/books/oa-mono/10.1201/9781003181378/developing-graphics-frameworks-python-opengl-lee-stemkoski-michael-pascale). DOI: [10.1201/9781003181378](https://doi.org/10.1201/9781003181378)
+* Lee Stemkoski and Michael Pascale (2021). *Developing Graphics Frameworks with Python and OpenGL*. CRC Press, [in print][textbook-print-url] and [online][textbook-online-url]. DOI: [10.1201/9781003181378][textbook-doi]
 
 <div align="right">
 
-( [back to top](#readme-top) )
+( [back to top](#top) )
 
 </div>
 
@@ -300,9 +293,16 @@ Project Link: [https://github.com/rsonger/pycg-framework](https://github.com/rso
 [website-shield]: https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Frobsonger.dev%2F
 [website-url]: https://robsonger.dev/
 [screenshot]: images/screenshot.png
+[selab-url]: https://robsonger.dev/software-engineering-lab/
 [Python]: https://img.shields.io/github/pipenv/locked/python-version/rsonger/pycg-framework?style=flat-square
 [Python-url]: https://www.python.org/
 [Pygame]: https://img.shields.io/badge/Pygame-2.1.1-brightgreen?style=flat-square
 [Pygame-url]: https://pygame.org/
 [PyOpenGL]: https://img.shields.io/badge/PyOpenGL-3.1.5-lightgrey?style=flat-square
 [PyOpenGL-url]: http://pyopengl.sourceforge.net/
+[venv-url]: https://docs.python.org/3/library/venv.html
+[pipenv-url]: https://pipenv.pypa.io/
+[afl-ur]: https://opensource.org/licenses/AFL-3.0
+[textbook-print-url]: https://www.routledge.com/Developing-Graphics-Frameworks-with-Python-and-OpenGL/Stemkoski-Pascale/p/book/9780367721800
+[textbook-online-url]: (https://www.taylorfrancis.com/books/oa-mono/10.1201/9781003181378/developing-graphics-frameworks-python-opengl-lee-stemkoski-michael-pascale)
+[textbook-doi]: https://doi.org/10.1201/9781003181378
