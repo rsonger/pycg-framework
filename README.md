@@ -302,7 +302,7 @@ Project Link: https://github.com/rsonger/pycg-framework
 [PyOpenGL-url]: http://pyopengl.sourceforge.net/
 [venv-url]: https://docs.python.org/3/library/venv.html
 [pipenv-url]: https://pipenv.pypa.io/
-[afl-ur]: https://opensource.org/licenses/AFL-3.0
+[afl-url]: https://opensource.org/licenses/AFL-3.0
 [textbook-print-url]: https://www.routledge.com/Developing-Graphics-Frameworks-with-Python-and-OpenGL/Stemkoski-Pascale/p/book/9780367721800
 [textbook-online-url]: (https://www.taylorfrancis.com/books/oa-mono/10.1201/9781003181378/developing-graphics-frameworks-python-opengl-lee-stemkoski-michael-pascale)
 [textbook-doi]: https://doi.org/10.1201/9781003181378
