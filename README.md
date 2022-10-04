@@ -84,7 +84,7 @@ The following instructions describe how to create a local copy of the framework 
 
 ### Prerequisites
 
-This project requires **Python 3.7+** and it is recommended to use a virtual environment for installing all the dependencies. Either **venv** or **Pipenv** work fine.
+This project requires **Python 3.8+** and it is recommended to use a virtual environment for installing all the dependencies. Either **venv** or **Pipenv** work fine.
 * [Python][Python-url]
 * [venv][venv-url]
 * [Pipenv][pipenv-url]
