@@ -1,5 +1,4 @@
 from math import pi
-import pygame
 
 from graphics.core.app import WindowApp
 from graphics.core.renderer import Renderer
