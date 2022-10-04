@@ -298,7 +298,7 @@ Project Link: https://github.com/rsonger/pycg-framework
 [Python-url]: https://www.python.org/
 [Pygame]: https://img.shields.io/badge/Pygame-2.1.1-brightgreen?style=flat-square
 [Pygame-url]: https://pygame.org/
-[PyOpenGL]: https://img.shields.io/badge/PyOpenGL-3.1.5-lightgrey?style=flat-square
+[PyOpenGL]: https://img.shields.io/badge/PyOpenGL-3.1.6-lightgrey?style=flat-square
 [PyOpenGL-url]: http://pyopengl.sourceforge.net/
 [venv-url]: https://docs.python.org/3/library/venv.html
 [pipenv-url]: https://pipenv.pypa.io/
