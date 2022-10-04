@@ -296,7 +296,7 @@ Project Link: https://github.com/rsonger/pycg-framework
 [selab-url]: https://robsonger.dev/software-engineering-lab/
 [Python]: https://img.shields.io/github/pipenv/locked/python-version/rsonger/pycg-framework?style=flat-square
 [Python-url]: https://www.python.org/
-[Pygame]: https://img.shields.io/badge/Pygame-2.1.1-brightgreen?style=flat-square
+[Pygame]: https://img.shields.io/badge/Pygame-2.1.2-brightgreen?style=flat-square
 [Pygame-url]: https://pygame.org/
 [PyOpenGL]: https://img.shields.io/badge/PyOpenGL-3.1.6-lightgrey?style=flat-square
 [PyOpenGL-url]: http://pyopengl.sourceforge.net/
