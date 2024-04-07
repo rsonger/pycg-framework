@@ -1,13 +1,11 @@
 import pygame
 import sys
+from abc import ABC, abstractmethod
 
 class Input:
-    """Handles the various inputs for applications, such as from the keyboard.
-    """
+    """ Handles the various inputs for applications, such as from the keyboard. """
     def __init__(self):
-        
-        # indicate whether the user has quit the application.
-        self._quit = False
+        self._quit = False  # whether the user has quit the application.
 
         # lists for key states
         #   down, up: discrete events that last for one iteration
@@ -37,7 +35,10 @@ class Input:
         return self.__key_up_list
 
     def update(self):
-        """Iterate over all user input events (such as keyboard or mouse) that occurred since the last events were checked."""
+        """
+        Iterate over all user input events (such as keyboard or mouse) that occurred since the last
+        events were checked.
+        """
 
         # reset discrete key states
         self.__key_down_list = []
@@ -75,23 +76,28 @@ class Input:
         return key_code in self.__key_up_list
 
 
-class WindowApp:
-    """A basic application window for rendering 3D graphics.
-    """
-    def __init__(self, screen_size=[512, 512]):
+class WindowApp(ABC):
+    """ A basic application window for rendering 3D graphics. """
+
+    def __init__(self, screen_size=(512, 512)):
 
         # initialize all pygame modules
         pygame.init()
-        # indicate rendering details
+
+        # specify rendering details
         display_flags = pygame.OPENGL | pygame.DOUBLEBUF
+
         # initialize buffers to perform antialiasing
         pygame.display.gl_set_attribute(pygame.GL_MULTISAMPLEBUFFERS, 1)
         pygame.display.gl_set_attribute(pygame.GL_MULTISAMPLESAMPLES, 4)
+
         # use a core OpenGL profile for cross-platform compatibility
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_PROFILE_MASK, 
                                         pygame.GL_CONTEXT_PROFILE_CORE)
+
         # create and display the window
         self.screen = pygame.display.set_mode(screen_size, display_flags)
+
         # set the text that appears in the title bar of the window
         pygame.display.set_caption("Graphics Window")
 
@@ -113,15 +119,15 @@ class WindowApp:
     def delta_time(self):
         return self.__delta_time
 
-    # to be implemented by subclasses
+    @abstractmethod
     def startup(self):
         pass
 
-    # to be implemented by subclasses
+    @abstractmethod
     def update(self):
         pass
 
-    # the main execution method containing all phases of an interactive program
+    # the main method that runs all the phases of an interactive program
     def run(self):
         # indicate the main loop is active
         running = True
