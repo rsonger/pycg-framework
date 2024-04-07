@@ -9,7 +9,7 @@ Modules exported by this package:
 from OpenGL.GL import GL_TRIANGLES
 
 from graphics.core.openGL import Uniform
-from graphics.core.openGLUtils import OpenGLUtils
+from graphics.core.openGLUtils import initialize_program
 
 class Material:
     """The Material class stores shader program references, Uniform objects, and OpenGL render settings.
@@ -18,7 +18,7 @@ class Material:
     links uniform variables to their associated data; and maintains OpenGL render settings and their values.
     """
     def __init__(self, vertex_shader_code, fragment_shader_code):
-        self._program_ref = OpenGLUtils.initialize_program(
+        self._program_ref = initialize_program(
             vertex_shader_code, 
             fragment_shader_code
         )
