@@ -7,6 +7,15 @@ class Attribute:
     """Manages attribute data to be stored in a single vertex buffer.
     """
 
+    # maps data types to their associated vertex size and component data type
+    _ATTRIB_SIZE_TYPE = {
+        'int':      (1, GL.GL_INT),
+        'float':    (1, GL.GL_FLOAT),
+        'vec2':     (2, GL.GL_FLOAT),
+        'vec3':     (3, GL.GL_FLOAT),
+        'vec4':     (4, GL.GL_FLOAT),
+    }
+
     def __init__(self, data_type: str, data: Iterable) -> None:
         """Stores the data type, data, and a reference to the buffer before sending the data to the buffer.
 
@@ -65,27 +74,16 @@ class Attribute:
         if vao_ref is not None:
             GL.glBindVertexArray(vao_ref)
 
+        # get vertex parameters for this attribute's data type
+        size, gl_type = self._ATTRIB_SIZE_TYPE.get(self.data_type, (0, 0))
+        if size == 0 or gl_type == 0:
+            raise Exception(f"Attribute {variable_name} has unknown type {self.data_type}")
+
         # specify how data will be read from the currently bound buffer 
         # into the specified variable. These associations are stored by
         # whichever VAO is bound before calling this method.
-        if self.data_type == "int":
-            GL.glVertexAttribPointer(
-                variable_ref, 1, GL.GL_INT, False, 0, None)
-        elif self.data_type == "float":
-            GL.glVertexAttribPointer(
-                variable_ref, 1, GL.GL_FLOAT, False, 0, None)
-        elif self.data_type == "vec2":
-            GL.glVertexAttribPointer(
-                variable_ref, 2, GL.GL_FLOAT, False, 0, None)
-        elif self.data_type == "vec3":
-            GL.glVertexAttribPointer(
-                variable_ref, 3, GL.GL_FLOAT, False, 0, None)
-        elif self.data_type == "vec4":
-            GL.glVertexAttribPointer(
-                variable_ref, 4, GL.GL_FLOAT, False, 0, None)
-        else:
-            raise Exception(f"Attribute {variable_name} has unknown type {self.data_type}")
-        
+        GL.glVertexAttribPointer(variable_ref, size, gl_type, False, 0, None)
+
         # indicate that data will be streamed to this variable
         GL.glEnableVertexAttribArray(variable_ref)
 
