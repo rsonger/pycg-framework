@@ -23,6 +23,8 @@ class Attribute:
             data_type: the type of the data being stored (int, float, vec2, vec3, vec4)
             data: the data to send to a vertex buffer
         """
+        if data_type not in self._ATTRIB_SIZE_TYPE.keys():
+            raise ValueError(data_type, "Unsupported data type")
 
         self.data_type = data_type
         self.data = data
@@ -75,9 +77,7 @@ class Attribute:
             GL.glBindVertexArray(vao_ref)
 
         # get vertex parameters for this attribute's data type
-        size, gl_type = self._ATTRIB_SIZE_TYPE.get(self.data_type, (0, 0))
-        if size == 0 or gl_type == 0:
-            raise Exception(f"Attribute {variable_name} has unknown type {self.data_type}")
+        size, gl_type = self._ATTRIB_SIZE_TYPE[self.data_type]
 
         # specify how data will be read from the currently bound buffer 
         # into the specified variable. These associations are stored by
@@ -89,14 +89,14 @@ class Attribute:
 
 
 class Uniform:
-    """Manages data for a single uniform variable in a shader program.
-    """
-    def __init__(self, data_type, data):
+    """ Manages data for a single uniform variable in a shader program """
 
+    _VALID_TYPES = ('int','bool','float','vec2','vec3','vec4','mat4','sampler2d')
+
+    def __init__(self, data_type, data):
         # check the given data type
-        valid_types = ['int','bool','float','vec2','vec3','vec4','mat4','sampler2d']
-        if data_type.lower() not in valid_types:
-            raise Exception(f"Unsupported data type: {data_type}")
+        if data_type.lower() not in self._VALID_TYPES:
+            raise ValueError(f"Unsupported data type: {data_type}")
         self.data_type = data_type.lower()
 
         # data to be sent to uniform variable
@@ -107,18 +107,16 @@ class Uniform:
 
     def locate_variable(self, program_ref, variable_name):
         """Get and store reference to a program variable with the given name."""
-        
+
         self.variable_ref = GL.glGetUniformLocation(program_ref, variable_name)
         if self.variable_ref == -1:
-          raise Exception(f"No uniform variable found for {variable_name}")
+          raise ValueError(f"No uniform variable found with name {variable_name}")
 
     def upload_data(self):
         """Store data in a previously located uniform variable."""
+        # check that the variable reference exists
+        assert self.variable_ref is not None, "Must locate uniform variable before uploading data."
 
-        if self.variable_ref == None:
-            # the variable has not been located in a program
-            raise Exception("Unable to upload data. Must locate uniform variable first.")
-            
         if self.data_type == "int":
             GL.glUniform1i(self.variable_ref, self.data)
         elif self.data_type == "bool":
@@ -126,25 +124,15 @@ class Uniform:
         elif self.data_type == "float":
             GL.glUniform1f(self.variable_ref, self.data)
         elif self.data_type == "vec2":
-            GL.glUniform2f(self.variable_ref, 
-                           self.data[0], 
-                           self.data[1])
+            GL.glUniform2f(self.variable_ref, *self.data)
         elif self.data_type == "vec3":
-            GL.glUniform3f(self.variable_ref, 
-                           self.data[0], 
-                           self.data[1], 
-                           self.data[2])
+            GL.glUniform3f(self.variable_ref, *self.data)
         elif self.data_type == "vec4":
-            GL.glUniform4f(self.variable_ref, 
-                           self.data[0], 
-                           self.data[1], 
-                           self.data[2], 
-                           self.data[3])
+            GL.glUniform4f(self.variable_ref, *self.data)
         elif self.data_type == "mat4":
             GL.glUniformMatrix4fv(self.variable_ref, 1, GL.GL_TRUE, self.data)
         elif self.data_type == "sampler2d":
             texture_obj_ref, texture_unit_ref = self.data
-
             GL.glActiveTexture(GL.GL_TEXTURE0 + texture_unit_ref)
             GL.glBindTexture(GL.GL_TEXTURE_2D, texture_obj_ref)
             GL.glUniform1i(self.variable_ref, texture_unit_ref)
