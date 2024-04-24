@@ -7,12 +7,12 @@ class Input:
     def __init__(self):
         self._quit = False  # whether the user has quit the application.
 
-        # lists for key states
+        # sets for key states
         #   down, up: discrete events that last for one iteration
         #   pressed: continuous events occurring between down and up events
-        self.__key_down_list = []
-        self.__key_pressed_list = []
-        self.__key_up_list = []
+        self.__down_keys = set()
+        self.__pressed_keys = set()
+        self.__up_keys = set()
 
     @property
     def quit(self):
@@ -23,16 +23,16 @@ class Input:
         self._quit = bool(q)
 
     @property
-    def key_down_list(self):
-        return self.__key_down_list
+    def down_keys(self):
+        return self.__down_keys
 
     @property
-    def key_pressed_list(self):
-        return self.__key_pressed_list
+    def pressed_keys(self):
+        return self.__pressed_keys
 
     @property
-    def key_up_list(self):
-        return self.__key_up_list
+    def up_keys(self):
+        return self.__up_keys
 
     def update(self):
         """
@@ -41,8 +41,8 @@ class Input:
         """
 
         # reset discrete key states
-        self.__key_down_list = []
-        self.__key_up_list = []
+        self.__down_keys.clear()
+        self.__up_keys.clear()
 
         for event in pygame.event.get():
             # quit event occurs by clicking the close button
@@ -54,26 +54,26 @@ class Input:
             #   keyup events terminate the pressed state
             if event.type == pygame.KEYDOWN:
                 key_name = pygame.key.name(event.key)
-                self.__key_down_list.append(key_name)
-                self.__key_pressed_list.append(key_name)
+                self.__down_keys.add(key_name)
+                self.__pressed_keys.add(key_name)
             if event.type == pygame.KEYUP:
                 key_name = pygame.key.name(event.key)
-                self.__key_up_list.append(key_name)
-                self.__key_pressed_list.remove(key_name)
+                self.__up_keys.add(key_name)
+                self.__pressed_keys.remove(key_name)
 
     def iskeydown(self, key_code):
         """Checks the down state of the given key"""
-        return key_code in self.__key_down_list
+        return key_code in self.__down_keys
 
 
     def iskeypressed(self, key_code):
         """Checks the pressed state of the given key"""
-        return key_code in self.__key_pressed_list
+        return key_code in self.__pressed_keys
 
 
     def iskeyup(self, key_code):
         """Checks the up state of the given key"""
-        return key_code in self.__key_up_list
+        return key_code in self.__up_keys
 
 
 class WindowApp(ABC):
