@@ -1,4 +1,4 @@
-from numpy.linalg import inv
+import numpy as np
 import OpenGL.GL as GL
 
 from graphics.core.matrix import Matrix
@@ -17,7 +17,7 @@ class Object3D:
         parent (Object3D): The parent object of this object in the scene graph.
     """
     def __init__(self):
-        self._transform = Matrix.get_identity()
+        self._transform = Matrix.identity()
         self._parent = None
         self._children = []
 
@@ -147,7 +147,7 @@ class Object3D:
             z (float): The number of units to translate along the z-axis.
             localCoord (bool, optional): Whether the transformation is local or not. Defaults to True.
         """
-        m = Matrix.make_translation(x,y,z)
+        m = Matrix.translation(x,y,z)
         self.apply_matrix(m, local_coords)
     
     def rotate_x(self, angle, local_coords=True):
@@ -157,7 +157,7 @@ class Object3D:
             angle (float): The number of radians to rotate around the x-axis.
             localCoord (bool, optional): Whether the tranformation is local or not. Defaults to True.
         """
-        m = Matrix.make_rotation_x(angle)
+        m = Matrix.rotation_x(angle)
         self.apply_matrix(m, local_coords)
     
     def rotate_y(self, angle, local_coords=True):
@@ -167,7 +167,7 @@ class Object3D:
             angle (float): The number of radians to rotate around the y-axis.
             localCoord (bool, optional): Whether the tranformation is local or not. Defaults to True.
         """
-        m = Matrix.make_rotation_y(angle)
+        m = Matrix.rotation_y(angle)
         self.apply_matrix(m, local_coords)
     
     def rotate_z(self, angle, local_coords=True):
@@ -177,7 +177,7 @@ class Object3D:
             angle (float): The number of radians to rotate around the z-axis.
             localCoord (bool, optional): Whether the tranformation is local or not. Defaults to True.
         """
-        m = Matrix.make_rotation_z(angle)
+        m = Matrix.rotation_z(angle)
         self.apply_matrix(m, local_coords)
     
     def scale_uniform(self, s, local_coords=True):
@@ -187,7 +187,7 @@ class Object3D:
             s (float): The magnitude by which to scale.
             localCoord (bool, optional): Whether the transformation is local or not. Defaults to True.
         """
-        m = Matrix.make_scale(s, s, s)
+        m = Matrix.scale(s, s, s)
         self.apply_matrix(m, local_coords)
 
 
@@ -229,10 +229,10 @@ class Camera(Object3D):
     """
     def __init__(self, angle_of_view=60, aspect_ratio=1, near=0.1, far=1000):
         super().__init__()
-        self._projection_matrix = Matrix.make_perspective(
+        self._projection_matrix = Matrix.perspective(
             angle_of_view, aspect_ratio, near, far
         )
-        self._view_matrix = Matrix.get_identity()
+        self._view_matrix = Matrix.identity()
 
     @property
     def projection_matrix(self):
@@ -243,7 +243,7 @@ class Camera(Object3D):
         return self._view_matrix
 
     def update_view_matrix(self):
-        self._view_matrix = inv(self.world_matrix)
+        self._view_matrix = np.linalg.inv(self.world_matrix)
 
 
 class Mesh(Object3D):

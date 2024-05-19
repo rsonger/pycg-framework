@@ -1,5 +1,5 @@
 from math import sin, cos, pi
-from numpy import linspace
+import numpy as np
 
 from graphics.core.matrix import Matrix
 from graphics.geometry import Geometry
@@ -13,9 +13,9 @@ class ParametricGeometry(Geometry):
         
         # generate a matrix of vertex points for all values of (u,v)
         point_matrix = []
-        for u in linspace(u_start, u_stop, u_resolution + 1):
+        for u in np.linspace(u_start, u_stop, u_resolution + 1):
             matrix_row = []
-            for v in linspace(v_start, v_stop, v_resolution + 1):
+            for v in np.linspace(v_start, v_stop, v_resolution + 1):
                 matrix_row.append(surface_function(u,v))
             point_matrix.append(matrix_row)
         
@@ -109,15 +109,15 @@ class CylindricalGeometry(ParametricGeometry):
         # add polygons to the top and bottom if requested
         if top_closed:
             top_geometry = PolygonGeometry(radial_segments, top_radius)
-            rotation = Matrix.make_rotation_y(-pi/2) @ Matrix.make_rotation_x(-pi/2)
-            transform = Matrix.make_translation(0, height/2, 0) @ rotation
+            rotation = Matrix.rotation_y(-pi/2) @ Matrix.rotation_x(-pi/2)
+            transform = Matrix.translation(0, height/2, 0) @ rotation
             top_geometry.apply_matrix(transform)
             self.merge(top_geometry)
 
         if bottom_closed:
             bottom_geometry = PolygonGeometry(radial_segments, bottom_radius)
-            rotation = Matrix.make_rotation_y(-pi/2) @ Matrix.make_rotation_x(pi/2)
-            transform = Matrix.make_translation(0, -height/2, 0) @ rotation
+            rotation = Matrix.rotation_y(-pi/2) @ Matrix.rotation_x(pi/2)
+            transform = Matrix.translation(0, -height/2, 0) @ rotation
             bottom_geometry.apply_matrix(transform)
             self.merge(bottom_geometry)
 

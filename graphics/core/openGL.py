@@ -1,7 +1,7 @@
 from typing import Iterable
 
 import OpenGL.GL as GL
-import numpy
+import numpy as np
 
 class Attribute:
     """Manages attribute data to be stored in a single vertex buffer.
@@ -39,7 +39,7 @@ class Attribute:
 
         # convert data to numpy array format
         # using 32-bit floating point numbers
-        data = numpy.array(self.data).astype(numpy.float32)
+        data = np.array(self.data).astype(np.float32)
 
         # select buffer used by the following functions
         GL.glBindBuffer(GL.GL_ARRAY_BUFFER, self.buffer_ref)
