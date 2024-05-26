@@ -1,20 +1,12 @@
-"""A collection of various subclasses of the Material class.
-
-Modules exported by this package:
-
-- `basic_materials`
-- `texture_material`
-"""
-
 from OpenGL.GL import GL_TRIANGLES
 
 from graphics.core.openGL import Uniform
 from graphics.core.openGLUtils import initialize_program
 
 class Material:
-    """The Material class stores shader program references, Uniform objects, and OpenGL render settings.
+    """The Material class stores shader program references, uniform variables, and OpenGL render settings.
 
-    The base class initializes the shader program from vertex shader code and fragment shader code;
+    This class initializes the shader program from vertex shader code and fragment shader code;
     links uniform variables to their associated data; and maintains OpenGL render settings and their values.
     """
     def __init__(self, vertex_shader_code, fragment_shader_code):

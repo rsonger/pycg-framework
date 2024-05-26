@@ -2,8 +2,8 @@ from math import sin, cos, pi
 import numpy as np
 
 from graphics.core.matrix import Matrix
-from graphics.geometry import Geometry
-from graphics.geometry.basic_geometries import PolygonGeometry
+from graphics.geometries.geometry import Geometry
+from graphics.geometries.basic_geometries import PolygonGeometry
 
 class ParametricGeometry(Geometry):
     """A geometric surface rendered with the given function for parameters u and v."""

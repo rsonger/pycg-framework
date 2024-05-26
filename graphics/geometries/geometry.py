@@ -1,11 +1,3 @@
-"""A collection of various subclasses of the Geometry class.
-
-Modules exported by this package:
-
-- `basic_geometries`
-- `parametric_geometries`
-"""
-
 from graphics.core.openGL import Attribute
 
 class Geometry:

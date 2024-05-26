@@ -1,6 +1,6 @@
 import OpenGL.GL as GL
 
-from graphics.material import Material
+from graphics.materials import Material
 
 class BasicMaterial(Material):
     """A simple material for rendering objects in a solid color or vertex colors."""

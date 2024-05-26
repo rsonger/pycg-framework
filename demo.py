@@ -5,10 +5,10 @@ from graphics.core.renderer import Renderer
 from graphics.core.scene_graph import Scene, Camera, Mesh
 from graphics.core.texture import Texture
 
-from graphics.geometry.basic_geometries import RectangleGeometry, BoxGeometry
-from graphics.geometry.parametric_geometries import SphereGeometry
-from graphics.material.texture_material import TextureMaterial
-from graphics.extras.camera_rig import CameraRig
+from graphics.geometries import RectangleGeometry, BoxGeometry
+from graphics.geometries import SphereGeometry
+from graphics.materials import TextureMaterial
+from graphics.extras import CameraRig
 
 class Demo(WindowApp):
     """Demos the PyCG with texture mapping and interactive camera."""
@@ -50,6 +50,9 @@ class Demo(WindowApp):
     def update(self):
         # handle inputs and animations
         self.rig.update(self.input, self.delta_time)
+
+        if self.input.iskeydown("escape"):
+            self.input.quit = True
 
         # render the scene
         self.renderer.render(self.scene, self.camera)

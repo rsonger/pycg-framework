@@ -2,8 +2,8 @@ import numpy as np
 import OpenGL.GL as GL
 
 from graphics.core.matrix import Matrix
-from graphics.geometry import Geometry
-from graphics.material import Material
+from graphics.geometries import Geometry
+from graphics.materials import Material
 
 class Object3D:
     """The Object3D class represents a node in the scene graph tree structure. 
@@ -26,7 +26,7 @@ class Object3D:
         return self._parent
 
     @parent.setter
-    def parent(self, node):
+    def parent(self, node: 'Object3D'):
         """Sets or removes the parent of this node.
 
         Args:
@@ -86,7 +86,7 @@ class Object3D:
         Args:
             position (list): This object's new position as [x,y,z] coordinates.
         """
-        if not type(coords) in (list,tuple) or len(coords) != 3:
+        if not isinstance(coords, (list,tuple)) or len(coords) != 3:
             raise Exception("Object3D position must be in the form (x,y,z).")
 
         self._transform.itemset((0,3), coords[0]) # numpy.ndarray.itemset
@@ -100,12 +100,11 @@ class Object3D:
         Returns:
             list: This object's coordinates as [x,y,z].
         """
-        world_transform = self.world_matrix
-        return [world_transform.item((0,3)),
-                world_transform.item((1,3)),
-                world_transform.item((2,3))]
+        return [self.world_matrix.item((0,3)),
+                self.world_matrix.item((1,3)),
+                self.world_matrix.item((2,3))]
 
-    def add(self, child):
+    def add(self, child: 'Object3D'):
         """Adds an object as the child to this object in the scene graph.
 
         Args:
@@ -126,19 +125,19 @@ class Object3D:
         self._children.remove(child)
         child.parent = None
 
-    def apply_matrix(self, matrix, local_coords=True):
+    def apply_matrix(self, matrix, local=True):
         """Apply a geometric transformation to this object.
 
         Args:
             matrix (NDArray): The transformation matrix to apply.
             localCoord (bool, optional): Whether the transformation is local or not. Defaults to True.
         """
-        if local_coords:
+        if local:
             self._transform = self._transform @ matrix
         else:
             self._transform = matrix @ self._transform
 
-    def translate(self, x, y, z, local_coords=True):
+    def translate(self, x, y, z, local=True):
         """Calculate and apply a translation to this object.
 
         Args:
@@ -148,9 +147,9 @@ class Object3D:
             localCoord (bool, optional): Whether the transformation is local or not. Defaults to True.
         """
         m = Matrix.translation(x,y,z)
-        self.apply_matrix(m, local_coords)
+        self.apply_matrix(m, local)
     
-    def rotate_x(self, angle, local_coords=True):
+    def rotate_x(self, angle, local=True):
         """Calculate and apply a rotation around the x-axis of this object.
 
         Args:
@@ -158,9 +157,9 @@ class Object3D:
             localCoord (bool, optional): Whether the tranformation is local or not. Defaults to True.
         """
         m = Matrix.rotation_x(angle)
-        self.apply_matrix(m, local_coords)
+        self.apply_matrix(m, local)
     
-    def rotate_y(self, angle, local_coords=True):
+    def rotate_y(self, angle, local=True):
         """Calculate and apply a rotation around the y-axis of this object.
 
         Args:
@@ -168,9 +167,9 @@ class Object3D:
             localCoord (bool, optional): Whether the tranformation is local or not. Defaults to True.
         """
         m = Matrix.rotation_y(angle)
-        self.apply_matrix(m, local_coords)
+        self.apply_matrix(m, local)
     
-    def rotate_z(self, angle, local_coords=True):
+    def rotate_z(self, angle, local=True):
         """Calculate and apply a rotation around the z-axis of this object.
 
         Args:
@@ -178,9 +177,9 @@ class Object3D:
             localCoord (bool, optional): Whether the tranformation is local or not. Defaults to True.
         """
         m = Matrix.rotation_z(angle)
-        self.apply_matrix(m, local_coords)
+        self.apply_matrix(m, local)
     
-    def scale_uniform(self, s, local_coords=True):
+    def scale_uniform(self, s, local=True):
         """Calculate and apply a scaling tranformation to this object.
 
         Args:
@@ -188,7 +187,7 @@ class Object3D:
             localCoord (bool, optional): Whether the transformation is local or not. Defaults to True.
         """
         m = Matrix.scale(s, s, s)
-        self.apply_matrix(m, local_coords)
+        self.apply_matrix(m, local)
 
 
 class Scene(Object3D):
@@ -240,10 +239,8 @@ class Camera(Object3D):
 
     @property
     def view_matrix(self):
-        return self._view_matrix
-
-    def update_view_matrix(self):
         self._view_matrix = np.linalg.inv(self.world_matrix)
+        return self._view_matrix
 
 
 class Mesh(Object3D):

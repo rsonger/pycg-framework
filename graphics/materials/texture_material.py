@@ -1,6 +1,6 @@
 import OpenGL.GL as GL
 
-from graphics.material import Material
+from graphics.materials import Material
 
 class TextureMaterial(Material):
 
