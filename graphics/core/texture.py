@@ -31,7 +31,7 @@ class Texture:
             if name in self.properties.keys():
                 self.properties[name] = data
             else:
-                raise Exception(f"Texture has no property with name {name}.")
+                raise ValueError(f"Texture has no property with name {name}.")
     
     def upload_data(self):
 

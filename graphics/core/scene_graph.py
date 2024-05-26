@@ -33,13 +33,13 @@ class Object3D:
             node (Object3D): The node to be the parent of this node, or None
 
         Raises:
-            Exception: The provided node is not an instance of Object3D
-            Exception: This node already has a parent and the provided node is not None
+            RuntimeError: The provided node is not an instance of Object3D
+            RuntimeError: This node already has a parent and the provided node is not None
         """
         if not isinstance(node, Object3D):
-            raise Exception("Parent node must be an instance of Object3D.")
+            raise RuntimeError("Parent node must be an instance of Object3D.")
         if self._parent is not None and node is not None:
-            raise Exception("Cannot add a child of another node.")
+            raise RuntimeError("Cannot add a child of another node.")
         self._parent = node
 
     @property
@@ -87,7 +87,7 @@ class Object3D:
             position (list): This object's new position as [x,y,z] coordinates.
         """
         if not isinstance(coords, (list,tuple)) or len(coords) != 3:
-            raise Exception("Object3D position must be in the form (x,y,z).")
+            raise ValueError("Object3D position must be in the form (x,y,z).")
 
         self._transform.itemset((0,3), coords[0]) # numpy.ndarray.itemset
         self._transform.itemset((1,3), coords[1]) # inserts the scalar value into the array at the given index     
@@ -111,7 +111,7 @@ class Object3D:
             child (Object3D): The child node to add to this object.
 
         Raises:
-            Exception: The object to add is already a child of another object.
+            RuntimeError: The object to add is already a child of another object.
         """
         child.parent = self
         self._children.append(child)
@@ -201,7 +201,7 @@ class Scene(Object3D):
     @Object3D.parent.setter
     def parent(self, node):
         if node is not None:
-            raise Exception("The root node cannot have a parent.")
+            raise RuntimeError("The root node cannot have a parent.")
 
 
 class Group(Object3D):
@@ -258,11 +258,11 @@ class Mesh(Object3D):
         super().__init__()
 
         if not isinstance(geometry, Geometry):
-            raise Exception(f"Expecting an instance of Geometry but got {type(geometry)} instead.")
+            raise ValueError(f"Expecting an instance of Geometry but got {type(geometry)} instead.")
         self._geometry = geometry
         
         if not isinstance(material, Material):
-            raise Exception(f"Expecting an instance of Material but got {type(material)} instead.")
+            raise ValueError(f"Expecting an instance of Material but got {type(material)} instead.")
         self._material = material
 
         self._visible = True

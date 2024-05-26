@@ -59,7 +59,7 @@ class Attribute:
             vao_ref: An OpenGL reference to a vertex array object. Defaults to None.
 
         Raises:
-            Exception: The data_type of this attribute variable is unknown.
+            ValueError: The data_type of this attribute variable is unknown.
         """
 
         # get reference for program variable with given name

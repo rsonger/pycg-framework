@@ -91,7 +91,7 @@ class LineMaterial(BasicMaterial):
         elif self._settings["lineType"] == "segments":
             self._settings["drawStyle"] = GL.GL_LINES
         else:
-            raise Exception("Unknown line type: must be one of [connected | loop | segments].")
+            raise ValueError("Unknown line type: must be one of [connected | loop | segments].")
 
 class SurfaceMaterial(BasicMaterial):
     """Manages render settings for drawing vertices as a colored surface.

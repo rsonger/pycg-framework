@@ -25,9 +25,9 @@ class Renderer:
             camera (core.camera_graph.Camera): The camera used to view the scene.
         """
         if not isinstance(scene, Scene):
-            raise Exception("The given scene must be an instance of Scene.")
+            raise ValueError("The given scene must be an instance of Scene.")
         if not isinstance(camera, Camera):
-            raise Exception("The given camera must be an instance of Camera.")
+            raise ValueError("The given camera must be an instance of Camera.")
 
         # clear buffers
         GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)

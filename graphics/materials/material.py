@@ -46,7 +46,7 @@ class Material:
             dataType (string, optional): The type of data stored in the uniform variable. Defaults to None.
 
         Raises:
-            Exception: _description_
+            ValueError: when setting a new uniform variable without a data type
         """
         if variable_name in self._uniforms.keys():
             self._uniforms[variable_name].data = data
@@ -55,7 +55,7 @@ class Material:
             self._uniforms[variable_name].locate_variable(self._program_ref, 
                                                           variable_name)
         else:
-            raise Exception("A new Material property must have a dataType.")
+            raise ValueError("A new Material property must have a dataType.")
             
     def update_render_settings(self):
         pass
@@ -68,7 +68,7 @@ class Material:
             elif name in self._settings:
                 self._settings[name] = data
             else:
-                raise Exception(f"Material has no property named {name}")
+                raise ValueError(f"Material has no property named {name}")
         
     def upload_data(self):
         """Convenience method for uploading the data of all stored uniform variables."""

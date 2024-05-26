@@ -30,7 +30,7 @@ def initialize_shader(shader_code, shader_type):
         # free memory used to store shader program
         GL.glDeleteShader(shader_ref)
         # raise exception to halt application and print error message
-        raise Exception(error_message)
+        raise RuntimeError(error_message)
 
     # compilation was successful, so return shader reference value
     return shader_ref
@@ -71,7 +71,7 @@ def initialize_program(vertex_shader_code, fragment_shader_code):
         # convert byte string to character string
         error_message = f"\n{error_message.decode('utf-8')}"
         # raise exception to halt application and print error message
-        raise Exception(error_message)
+        raise RuntimeError(error_message)
 
     # linking was successful, so return program reference value
     return program_ref

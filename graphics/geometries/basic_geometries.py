@@ -81,12 +81,12 @@ class BoxGeometry(Geometry):
 
     def change_position(self, position_data):
         if len(position_data) != 8 or len(position_data[0]) != 3:
-            raise Exception("Box geometry position requires 8 points of 3-dimensional vertices")
+            raise ValueError("Box geometry position requires 8 points of 3-dimensional vertices")
         self.set_attribute("vertexPosition", position_data)
     
     def change_color(self, color_data):
         if len(color_data) != 8 or len(color_data[0]) != 3:
-            raise Exception("Box geometry color requires 8 points of 3-dimensional vertices")
+            raise ValueError("Box geometry color requires 8 points of 3-dimensional vertices")
         self.set_attribute("vertexColor", color_data)
 
 

@@ -37,7 +37,7 @@ class Geometry:
         elif data_type is not None:
             self._attributes[variable_name] = Attribute(data_type, data)
         else:
-            raise Exception("A new Geometry attribute must have a data type.")
+            raise ValueError("A new Geometry attribute must have a data type.")
     
     def count_vertices(self, variable_name=None):
         """Counts the number of vertices as the length of an attribute's data.
@@ -56,7 +56,7 @@ class Geometry:
     def apply_matrix(self, matrix, variable_name="vertexPosition"):
         """Transform the data in an attribute using the given matrix."""
         if variable_name not in self._attributes.keys():
-            raise Exception(f"Unable to apply matrix to unknown attribute: {variable_name}")
+            raise ValueError(f"Unable to apply matrix to unknown attribute: {variable_name}")
 
         old_position_data = self._attributes[variable_name].data
         new_position_data = []
