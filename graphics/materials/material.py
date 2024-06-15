@@ -4,7 +4,8 @@ from graphics.core.openGL import Uniform
 from graphics.core.openGLUtils import initialize_program
 
 class Material:
-    """The Material class stores shader program references, uniform variables, and OpenGL render settings.
+    """
+    The Material class stores shader program references, uniform variables, and OpenGL render settings.
 
     This class initializes the shader program from vertex shader code and fragment shader code;
     links uniform variables to their associated data; and maintains OpenGL render settings and their values.
@@ -31,11 +32,12 @@ class Material:
         return self._program_ref
 
     def get_setting(self, setting_name):
-        """Return a setting value if the setting exists; otherwise, return None."""
+        """ Return a setting value if the setting exists; otherwise, return None """
         return self._settings.get(setting_name, None)
 
     def set_uniform(self, variable_name, data, data_type=None):
-        """Add or update a Uniform object representing a property of this material.
+        """
+        Add or update a Uniform object representing a property of this material.
 
         If the uniform variable is already set, its data will be updated. 
         If a new uniform object is being created, a data type must be provided.
@@ -48,7 +50,7 @@ class Material:
         Raises:
             ValueError: when setting a new uniform variable without a data type
         """
-        if variable_name in self._uniforms.keys():
+        if variable_name in self._uniforms:
             self._uniforms[variable_name].data = data
         elif data_type is not None:
             self._uniforms[variable_name] = Uniform(data_type, data)
@@ -61,7 +63,7 @@ class Material:
         pass
 
     def set_properties(self, properties):
-        """Convenience method for setting multiple uniform variable and render setting values from a dictionary."""
+        """ Convenience method for setting multiple uniform variable and render setting values from a dictionary """
         for name, data in properties.items():
             if name in self._uniforms.keys():
                 self._uniforms[name].data = data

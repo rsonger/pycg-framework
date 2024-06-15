@@ -14,10 +14,12 @@ class RectangleGeometry(Geometry):
     def __init__(self, width=1, height=1):
         super().__init__()
 
-        P0 = (-width/2, -height/2, 0)
-        P1 = ( width/2, -height/2, 0)
-        P2 = (-width/2,  height/2, 0)
-        P3 = ( width/2,  height/2, 0)
+        w, h = width/2, height/2
+
+        P0 = (-w, -h, 0)
+        P1 = ( w, -h, 0)
+        P2 = (-w,  h, 0)
+        P3 = ( w,  h, 0)
         C0, C1, C2, C3 = (1,1,1), (1,0,0), (0,1,0), (0,0,1)
 
         position_data = (P0, P1, P3, P0, P3, P2)
@@ -40,15 +42,17 @@ class BoxGeometry(Geometry):
     def __init__(self, width=1, height=1, depth=1):
         super().__init__()
 
+        w, h, d = width/2, height/2, depth/2
+
         # position vertices
-        P0 = (-width/2, -height/2, -depth/2)
-        P1 = ( width/2, -height/2, -depth/2)
-        P2 = (-width/2,  height/2, -depth/2)
-        P3 = ( width/2,  height/2, -depth/2)
-        P4 = (-width/2, -height/2,  depth/2)
-        P5 = ( width/2, -height/2,  depth/2)
-        P6 = (-width/2,  height/2,  depth/2)
-        P7 = ( width/2,  height/2,  depth/2)
+        P0 = (-w, -h, -d)
+        P1 = ( w, -h, -d)
+        P2 = (-w,  h, -d)
+        P3 = ( w,  h, -d)
+        P4 = (-w, -h,  d)
+        P5 = ( w, -h,  d)
+        P6 = (-w,  h,  d)
+        P7 = ( w,  h,  d)
 
         # color vertex data for each side
         C1 = [(1.0, 0.0, 0.0)] * 6  # six red vertices

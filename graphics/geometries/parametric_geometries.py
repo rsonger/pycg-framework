@@ -69,9 +69,15 @@ class PlaneGeometry(ParametricGeometry):
         
         surface_function = lambda u,v: [u, v, 0]
         
-        super().__init__( -width/2, width/2, width_segments, 
-                          -height/2, height/2, height_segments, 
-                          surface_function)
+        super().__init__(
+            u_start=-width/2,
+            u_stop=width/2,
+            u_resolution=width_segments,
+            v_start=-height/2,
+            v_stop=height/2,
+            v_resolution=height_segments,
+            surface_function=surface_function
+        )
 
 class EllipsoidGeometry(ParametricGeometry):
     """A sphere stretched by the given factors of width, height, and depth."""
@@ -84,27 +90,47 @@ class EllipsoidGeometry(ParametricGeometry):
             depth/2 * cos(u) * cos(v)
         ]
 
-        super().__init__(0, 2*pi, radial_segments, 
-                            -pi/2, pi/2, height_segments, surface_function)
+        super().__init__(
+            u_start=0,
+            u_stop=2*pi,
+            u_resolution=radial_segments,
+            v_start=-pi/2,
+            v_stop=pi/2,
+            v_resolution=height_segments,
+            surface_function=surface_function
+        )
 
 class SphereGeometry(EllipsoidGeometry):
     """A perfect sphere with the given radius."""
     def __init__(self, radius=1, radial_segments=32, height_segments=16):
-        super().__init__(2*radius, 2*radius, 2*radius, 
-                         radial_segments, height_segments)
+        super().__init__(
+            width=2*radius,
+            height=2*radius,
+            depth=2*radius,
+            radial_segments=radial_segments,
+            height_segments=height_segments
+        )
 
 class CylindricalGeometry(ParametricGeometry):
     """A cylindrical object with the given top and bottom radiuses."""
     def __init__(self, top_radius=1, bottom_radius=1, height=1,
                        radial_segments=32, height_segments=4, 
                        top_closed=True, bottom_closed=True):
+        # S(u,v) = ((vt + s(1-v))sin(u), h(v-0.5), (vt + s(1-v)cos(u)))
         surface_function = lambda u,v: [
-            (v * top_radius + (1-v) * bottom_radius) * sin(u),
-            height * (v - 0.5),
-            (v * top_radius + (1-v) * bottom_radius) * cos(u)
+            (v * top_radius + (1-v) * bottom_radius) * sin(u),  # x
+            height * (v - 0.5),                                 # y
+            (v * top_radius + (1-v) * bottom_radius) * cos(u)   # z
         ]
-        super().__init__(0, 2*pi, radial_segments, 
-                         0, 1, height_segments, surface_function)
+        super().__init__(
+            u_start=0,
+            u_stop=2*pi,
+            u_resolution=radial_segments,
+            v_start=0,
+            v_stop=1,
+            v_resolution=height_segments,
+            surface_function=surface_function
+        )
 
         # add polygons to the top and bottom if requested
         if top_closed:
@@ -125,14 +151,26 @@ class CylinderGeometry(CylindricalGeometry):
     "A cylindrical object with the same radius at the top and bottom."
     def __init__(self, radius=1, height=1, radial_segments=32,
                        height_segments=4, top_closed=True, bottom_closed=True):
-        
-        super().__init__(radius, radius, height, 
-                         radial_segments, height_segments, 
-                         top_closed, bottom_closed)
+        super().__init__(
+            top_radius=radius,
+            bottom_radius=radius,
+            height=height,
+            radial_segments=radial_segments,
+            height_segments=height_segments,
+            top_closed=top_closed,
+            bottom_closed=bottom_closed
+        )
 
 class ConeGeometry(CylindricalGeometry):
     """A cylindrical object that comes to a point at the top."""
     def __init__(self, radius=1, height=1, radial_segments=32,
                        height_segments=4, closed=True):
-        super().__init__(0, radius, height, radial_segments, 
-                         height_segments, False, closed)
+        super().__init__(
+            top_radius=0,
+            bottom_radius=radius,
+            height=height,
+            radial_segments=radial_segments,
+            height_segments=height_segments,
+            top_closed=False,
+            bottom_closed=closed
+        )
